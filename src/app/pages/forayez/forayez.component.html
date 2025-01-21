@@ -1,5 +1,7 @@
 @if (!isOnline) {
 <app-net-status></app-net-status>
+} @if (loading()) {
+<app-loader></app-loader>
 } @else {
 <section class="w-full lg:container mx-auto p-2 md:p-5">
   <app-heading-text
@@ -684,6 +686,36 @@
           />
         </label>
       </div>
+      <!-- BSo -->
+      <div class="relative mt-1 bg-cyan-100">
+        <span
+          class="capitalize bg-cyan-100 tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >ভাইয়ের পুত্র</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-cyan-100"
+          for="BSo"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BSo"
+            name="BSo"
+            type="number"
+            [(ngModel)]="model.BSo"
+            class="grow capitalize w-full bg-cyan-100 text-black"
+            placeholder="ভাইয়ের পুত্র"
+          />
+        </label>
+      </div>
       <!-- grandson -->
       <div class="relative mt-1 bg-cyan-100">
         <span
@@ -1057,6 +1089,22 @@
             </tr>
             }
 
+            <!-- ভাইয়ের পুত্র -->
+            @if (result?.rtbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result?.bSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBSo | bangla }}
+              </td>
+            </tr>
+            }
+
             <!-- নাতি -->
             @if (result?.rtGrS) {
             <tr>
@@ -1342,6 +1390,20 @@
               </td>
               <td class="text-black cp-0 border">
                 {{ result?.rSkBpS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাইয়ের পুত্র -->
+            @if (result?.rsbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBSo | bangla }}
               </td>
             </tr>
             }
