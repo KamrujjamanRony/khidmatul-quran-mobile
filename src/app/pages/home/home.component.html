@@ -1,0 +1,51 @@
+<section class="container mx-auto">
+
+  <div class="flex justify-end">
+    <button
+      routerLink="/salat-times"
+      class="inline-block text-md bg-green-500 px-6 py-2 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-green-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-green-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] m-2 mr-3 rounded-md"
+    >
+      সম্পূর্ণ মাসের সময়সূচী
+    </button>
+  </div>
+  <div>
+    <div
+      class="card w-full shadow-xl text-2xl bg-green-300 text-black mx-auto"
+    >
+      <div class="card-body">
+        <span class="text-red-600 py-2">{{ errorText }}</span>
+        <h2 class="text-3xl text-center">আজকের সময়সূচী</h2>
+        <p class="ml-10">সাহরি : {{ todaySalatTime.Shari | bengaliNumber }}</p>
+        <p class="ml-10">ফজর : {{ todaySalatTime.fajrT | bengaliNumber }}</p>
+        <p class="ml-10">
+          সূর্যোদয় : {{ todaySalatTime.sunrise | bengaliNumber }}
+        </p>
+        <p class="ml-10">যুহর : {{ todaySalatTime.dhuhrT | bengaliNumber }}</p>
+        <p class="ml-10">আসর : {{ todaySalatTime.asr | bengaliNumber }}</p>
+        <p class="ml-10">
+          মাগরিব : {{ todaySalatTime.maghrib | bengaliNumber }}
+        </p>
+        <p class="ml-10">ইশা : {{ todaySalatTime.isha | bengaliNumber }}</p>
+        <p class="ml-10">
+          মধ্যরাত : {{ todaySalatTime.midnight | bengaliNumber }}
+        </p>
+      </div>
+      @if(locationName){
+      <h1 class="text-center text-md !px-2">
+        ঠিকানা :
+        <p class="roboto font-bold text-rose-500">{{
+          locationName?.display_name ||
+            "dhaka"
+        }}</p>
+      </h1>
+      } @else {
+      <h1 class="text-center text-2xl !px-2">
+        City :
+        <span class="roboto font-bold text-rose-500">Dhaka</span>
+      </h1>
+      }
+    </div>
+  </div>
+</section>
+
+<app-footer link="/"></app-footer>

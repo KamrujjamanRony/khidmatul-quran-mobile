@@ -1,0 +1,59 @@
+@if (!isOnline) {
+  <app-net-status></app-net-status>
+} @else {
+@if (hijriDate) {
+  <section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto py-5">
+    <div class="mx-1 md:mx-2">
+      <app-heading-text Construction="হিজরী তারিখ" link="/" color="green"></app-heading-text>
+  
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+        <p [ngClass]="{ 'text-center': true, 'line-through': isSunset}">
+          @if (hijriDate) {{{ hijriDate }}}
+        </p>
+        @if(isSunset){
+        <p class="text-center">{{ hijriNextDay }}</p>
+        }
+      
+    </div>
+    @if (banglaDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ banglaDate }}
+      </p>
+    </div>
+    }
+
+    @if (gregorianDate) {
+      <div
+        class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl md:font-bold rounded-md flex flex-col items-center justify-center"
+      >
+        <p class="text-center">
+          {{ gregorianDate }}
+        </p>
+      </div>
+    }
+
+    @if (arabic13 && arabic14 && arabic15) {
+      <div class="mt-4 bg-rose-200 text-white w-full py-5 font-normal md:font-bold rounded-md flex flex-col items-center justify-center">
+        <p class="text-rose-600 text-center text-md md:text-xl">{{hijriMonth}} মাসের আইয়ামে বীজের রোজা
+          <span class="block"><span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic13[0]}}</span>, <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic14[0]}}</span>, <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic15[0]}}</span> ইং তারিখ</span> 
+          <span class="text-green-800 text-md md:mr-3 font-bold">{{arabic13[1]}}&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic14[1]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic15[1]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+        </p>
+      </div>
+    }
+      
+
+    </div>
+      
+  </section>
+} 
+@else {
+  <app-loading></app-loading>
+}
+}
+
+<app-footer link="/"></app-footer>

@@ -1,0 +1,290 @@
+<div
+        class="rounded-2xl px-[17px] bg-gradient-to-r from-slate-700 to-black my-2 text-white"
+        (click)="toggleExpand()"
+      >
+          <div class="text-5xl quran-text !font-thin mt-2 text-center leading-loose relative">
+            <!-- @if(!isExpanded && (selectedArabic || selectedDescribe)){
+                <svg class="absolute right-0 top-10" fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 45.402 45.402" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141 c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27 c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435 c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"></path> </g> </g></svg>
+            } 
+            @if(isExpanded && (selectedArabic || selectedDescribe)) {
+                <svg class="absolute right-0 top-10" width="20px" height="20px" viewBox="0 -12 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>minus</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-414.000000, -1049.000000)" fill="#ffffff"> <path d="M442,1049 L418,1049 C415.791,1049 414,1050.79 414,1053 C414,1055.21 415.791,1057 418,1057 L442,1057 C444.209,1057 446,1055.21 446,1053 C446,1050.79 444.209,1049 442,1049" id="minus" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            } -->
+            {{ data.arabic }}
+          </div>
+        
+        @if(isExpanded){
+            <div class="">
+                @if (selectedArabic) {
+                  <div
+                  class="h-[2px] w-full my-1 bg-gradient-to-r from-green-400 to-green-700"
+                ></div>
+                <p class="">{{ data.bangla_meaning }}</p>
+                }
+                
+                @if (selectedBangla) {
+                  <div
+                  class="h-[2px] w-full my-1 bg-gradient-to-r from-green-400 to-green-700"
+                ></div>
+                <p class="text-sm">{{ data.bangla_explanation }}</p>
+                }
+                @if (selectedDescribe && !isHidePlay) {
+                  <div class="flex">
+                    <div class="my-2 mr-2">
+                      <audio [id]="'player-' + index" [src]="data?.audio" loop></audio>
+                      <div
+                        class="btn bg-gradient-to-l from-green-500 to-green-800 hover:from-green-800 hover:to-green-500 text-white border-0 h-10 w-32"
+                      >
+                        @if (isPlay) {
+                        <button
+                          class="flex flex-row justify-center items-center"
+                          (click)="togglePlay($event, index)"
+                        >
+                          <svg
+                            fill="#fff"
+                            height="28px"
+                            width="28px"
+                            version="1.1"
+                            id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512"
+                            xml:space="preserve"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                              <g>
+                                <g>
+                                  <path
+                                    d="M256,0C114.842,0,0,114.842,0,256s114.842,256,256,256s256-114.842,256-256S397.158,0,256,0z M256,465.455 c-115.493,0-209.455-93.961-209.455-209.455S140.507,46.545,256,46.545S465.455,140.507,465.455,256S371.493,465.455,256,465.455z "
+                                  ></path>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <path
+                                    d="M318.061,139.636c-12.853,0-23.273,10.42-23.273,23.273v186.182c0,12.853,10.42,23.273,23.273,23.273 c12.853,0,23.273-10.42,23.273-23.273V162.909C341.333,150.056,330.913,139.636,318.061,139.636z"
+                                  ></path>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <path
+                                    d="M193.939,139.636c-12.853,0-23.273,10.42-23.273,23.273v186.182c0,12.853,10.42,23.273,23.273,23.273 c12.853,0,23.273-10.42,23.273-23.273V162.909C217.212,150.056,206.792,139.636,193.939,139.636z"
+                                  ></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                          <p class="ml-2 z-50">Pause</p>
+                        </button>
+                        } @else {
+                        <button
+                          class="flex flex-row justify-center items-center"
+                          (click)="togglePlay($event, index)"
+                        >
+                          <svg
+                            class="h-7"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 26 26"
+                          >
+                            <polygon
+                              class="fill-blue-100"
+                              points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"
+                            />
+                            <path
+                              class="fill-white"
+                              d="M26,13A13,13,0,1,1,13,0,13,13,0,0,1,26,13ZM13,2.18A10.89,10.89,0,1,0,23.84,13.06,10.89,10.89,0,0,0,13,2.18Z"
+                            />
+                          </svg>
+                          <p class="ml-2">Play</p>
+                        </button>
+                        }
+                      </div>
+                    </div>
+                    <div class="my-2 hidden">
+                      <a
+                        [href]="data?.audio"
+                        download="Dua_Abu_Darda.mp3"
+                        class="btn bg-gradient-to-r from-green-500 to-green-800 hover:from-green-800 hover:to-green-500 text-white border-0 h-10 flex flex-col justify-center items-center w-36"
+                      >
+                        <svg
+                          class="h-8 w-8"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M8 10C8 7.79086 9.79086 6 12 6C14.2091 6 16 7.79086 16 10V11H17C18.933 11 20.5 12.567 20.5 14.5C20.5 16.433 18.933 18 17 18H16.9C16.3477 18 15.9 18.4477 15.9 19C15.9 19.5523 16.3477 20 16.9 20H17C20.0376 20 22.5 17.5376 22.5 14.5C22.5 11.7793 20.5245 9.51997 17.9296 9.07824C17.4862 6.20213 15.0003 4 12 4C8.99974 4 6.51381 6.20213 6.07036 9.07824C3.47551 9.51997 1.5 11.7793 1.5 14.5C1.5 17.5376 3.96243 20 7 20H7.1C7.65228 20 8.1 19.5523 8.1 19C8.1 18.4477 7.65228 18 7.1 18H7C5.067 18 3.5 16.433 3.5 14.5C3.5 12.567 5.067 11 7 11H8V10ZM13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11V16.5858L9.70711 15.2929C9.31658 14.9024 8.68342 14.9024 8.29289 15.2929C7.90237 15.6834 7.90237 16.3166 8.29289 16.7071L11.2929 19.7071C11.6834 20.0976 12.3166 20.0976 12.7071 19.7071L15.7071 16.7071C16.0976 16.3166 16.0976 15.6834 15.7071 15.2929C15.3166 14.9024 14.6834 14.9024 14.2929 15.2929L13 16.5858V11Z"
+                              fill="#fff"
+                            ></path>
+                          </g>
+                        </svg>
+                        <p>Download</p>
+                      </a>
+                    </div>
+                  </div>
+                  }
+              </div>
+        }
+        
+        
+      </div>
+<!-- <div
+        class="rounded-2xl px-5 py-2 bg-gradient-to-t from-slate-700 to-gray-900 my-2 text-white"
+        (click)="toggleExpand()"
+      >
+          <div class="collapse-title text-3xl quran-text !font-thin mt-2 text-right leading-loose relative">
+            @if(!isExpanded && (selectedArabic || selectedDescribe)){
+                <svg class="absolute right-0 top-10" fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 45.402 45.402" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141 c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27 c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435 c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"></path> </g> </g></svg>
+            } 
+            @if(isExpanded && (selectedArabic || selectedDescribe)) {
+                <svg class="absolute right-0 top-10" width="20px" height="20px" viewBox="0 -12 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>minus</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-414.000000, -1049.000000)" fill="#ffffff"> <path d="M442,1049 L418,1049 C415.791,1049 414,1050.79 414,1053 C414,1055.21 415.791,1057 418,1057 L442,1057 C444.209,1057 446,1055.21 446,1053 C446,1050.79 444.209,1049 442,1049" id="minus" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            }
+            {{ data.arabic }}
+          </div>
+        
+        @if(isExpanded){
+            <div class="">
+                @if (selectedArabic) {
+                  <div
+                  class="h-[2px] w-full my-1 bg-gradient-to-r from-green-400 to-green-700"
+                ></div>
+                <p class="">{{ data.bangla_meaning }}</p>
+                }
+                
+                @if (selectedBangla) {
+                  <div
+                  class="h-[2px] w-full my-1 bg-gradient-to-r from-green-400 to-green-700"
+                ></div>
+                <p class="text-sm">{{ data.bangla_explanation }}</p>
+                }
+                @if (selectedDescribe) {
+                  <div class="flex">
+                    <div class="my-2 mr-2">
+                      <audio [id]="'player-' + index" [src]="data?.audio" loop></audio>
+                      <div
+                        class="btn bg-gradient-to-l from-green-500 to-green-800 hover:from-green-800 hover:to-green-500 text-white border-0 h-10 w-32"
+                      >
+                        @if (isPlay) {
+                        <button
+                          class="flex flex-row justify-center items-center"
+                          (click)="togglePlay($event, index)"
+                        >
+                          <svg
+                            fill="#fff"
+                            height="28px"
+                            width="28px"
+                            version="1.1"
+                            id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512"
+                            xml:space="preserve"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                              <g>
+                                <g>
+                                  <path
+                                    d="M256,0C114.842,0,0,114.842,0,256s114.842,256,256,256s256-114.842,256-256S397.158,0,256,0z M256,465.455 c-115.493,0-209.455-93.961-209.455-209.455S140.507,46.545,256,46.545S465.455,140.507,465.455,256S371.493,465.455,256,465.455z "
+                                  ></path>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <path
+                                    d="M318.061,139.636c-12.853,0-23.273,10.42-23.273,23.273v186.182c0,12.853,10.42,23.273,23.273,23.273 c12.853,0,23.273-10.42,23.273-23.273V162.909C341.333,150.056,330.913,139.636,318.061,139.636z"
+                                  ></path>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <path
+                                    d="M193.939,139.636c-12.853,0-23.273,10.42-23.273,23.273v186.182c0,12.853,10.42,23.273,23.273,23.273 c12.853,0,23.273-10.42,23.273-23.273V162.909C217.212,150.056,206.792,139.636,193.939,139.636z"
+                                  ></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                          <p class="ml-2 z-50">Pause</p>
+                        </button>
+                        } @else {
+                        <button
+                          class="flex flex-row justify-center items-center"
+                          (click)="togglePlay($event, index)"
+                        >
+                          <svg
+                            class="h-7"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 26 26"
+                          >
+                            <polygon
+                              class="fill-blue-100"
+                              points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"
+                            />
+                            <path
+                              class="fill-white"
+                              d="M26,13A13,13,0,1,1,13,0,13,13,0,0,1,26,13ZM13,2.18A10.89,10.89,0,1,0,23.84,13.06,10.89,10.89,0,0,0,13,2.18Z"
+                            />
+                          </svg>
+                          <p class="ml-2">Play</p>
+                        </button>
+                        }
+                      </div>
+                    </div>
+                    <div class="my-2 hidden">
+                      <a
+                        [href]="data?.audio"
+                        download="Dua_Abu_Darda.mp3"
+                        class="btn bg-gradient-to-r from-green-500 to-green-800 hover:from-green-800 hover:to-green-500 text-white border-0 h-10 flex flex-col justify-center items-center w-36"
+                      >
+                        <svg
+                          class="h-8 w-8"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M8 10C8 7.79086 9.79086 6 12 6C14.2091 6 16 7.79086 16 10V11H17C18.933 11 20.5 12.567 20.5 14.5C20.5 16.433 18.933 18 17 18H16.9C16.3477 18 15.9 18.4477 15.9 19C15.9 19.5523 16.3477 20 16.9 20H17C20.0376 20 22.5 17.5376 22.5 14.5C22.5 11.7793 20.5245 9.51997 17.9296 9.07824C17.4862 6.20213 15.0003 4 12 4C8.99974 4 6.51381 6.20213 6.07036 9.07824C3.47551 9.51997 1.5 11.7793 1.5 14.5C1.5 17.5376 3.96243 20 7 20H7.1C7.65228 20 8.1 19.5523 8.1 19C8.1 18.4477 7.65228 18 7.1 18H7C5.067 18 3.5 16.433 3.5 14.5C3.5 12.567 5.067 11 7 11H8V10ZM13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11V16.5858L9.70711 15.2929C9.31658 14.9024 8.68342 14.9024 8.29289 15.2929C7.90237 15.6834 7.90237 16.3166 8.29289 16.7071L11.2929 19.7071C11.6834 20.0976 12.3166 20.0976 12.7071 19.7071L15.7071 16.7071C16.0976 16.3166 16.0976 15.6834 15.7071 15.2929C15.3166 14.9024 14.6834 14.9024 14.2929 15.2929L13 16.5858V11Z"
+                              fill="#fff"
+                            ></path>
+                          </g>
+                        </svg>
+                        <p>Download</p>
+                      </a>
+                    </div>
+                  </div>
+                  }
+              </div>
+        }
+        
+        
+      </div> -->

@@ -1,0 +1,53 @@
+<div class="w-full h-full pb-5 bg-gradient-to-l from-green-500 to-green-700">
+  <app-heading-text Construction="চল্লিশ দরুদ ও সালাম" link="/amol"></app-heading-text>
+
+  <div class="flex justify-end max-w-7xl mx-auto">
+    <!-- feature Inputs -->
+    <div class="px-2">
+      <label class="radio border-none text-white">
+        <input
+          type="radio"
+          [checked]="selectedArabic === true"
+          (click)="toggleArabic()"
+        />
+        উচ্চারণ
+      </label>
+    </div>
+    <div class="px-2 hidden">
+      <label class="radio border-none text-white">
+        <input
+          type="radio"
+          [checked]="selectedBangla === true"
+          (click)="toggleBangla()"
+        />
+        অর্থ
+      </label>
+    </div>
+    <div class="px-2">
+      <label class="radio border-none text-white">
+        <input
+          type="radio"
+          [checked]="selectedDescribe === true"
+          (click)="toggleDescribe()"
+        />
+        অডিও
+      </label>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto">
+    @for (data of arabicLanguage; track $index;) {
+    <app-arabic-card
+      [index]="$index"
+      [data]="data"
+      [isPlay]="isPlay[$index]"
+      [selectedArabic]="selectedArabic"
+      [selectedBangla]="selectedBangla"
+      [selectedDescribe]="selectedDescribe"
+      [isExpanded]="expandedIndex === $index"
+      (expand)="handleExpand($index)"
+    ></app-arabic-card>
+    }
+  </div>
+</div>
+
+<app-footer link="/amol"></app-footer>

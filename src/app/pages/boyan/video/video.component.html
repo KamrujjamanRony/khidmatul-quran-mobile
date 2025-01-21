@@ -1,0 +1,17 @@
+@if (!isOnline) {
+    <app-net-status></app-net-status>
+  } @else {
+<section class="container mx-auto py-5">
+    <app-heading-text Construction="ইউটিউব ভিডিও" link="/boyan-menu" color="green"></app-heading-text>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        @for (boyan of sortItems(allBoyan$ | async); track $index) {
+            <app-video-card [title]="boyan.title" [img]="boyan.imageUrl" [videoId]="boyan.url" />
+        }
+    </div>
+</section>
+  }
+
+
+
+  <app-footer link="/boyan-menu"></app-footer>

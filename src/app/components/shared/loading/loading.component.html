@@ -1,0 +1,13 @@
+<section class="flex flex-col justify-center items-center h-[80vh]">
+    
+    @if (isOffline) {
+        <p class="text-rose-500 text-lg text-center">
+            আপনার ইন্টারনেট সংযোগ বিচ্ছিন্ন! <br /> দয়া করে ইন্টারনেট সংযোগ দিয়ে নিচের বাটনে ক্লিক করুন।
+        </p>
+        <button (click)="onReload()" class="btn bg-green-700 hover:bg-green-500 text-white my-2">পুনরুদ্ধার করুন</button>
+    } @else {
+        <h1 class="text-5xl font-bold">লোডিং...</h1>
+        <h3 class="text-xl font-semibold">দয়া করে একটু অপেক্ষা করুন!</h3>
+    }
+
+</section>

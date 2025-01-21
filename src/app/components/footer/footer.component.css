@@ -1,0 +1,12 @@
+/* This ensures that the font size, padding, and margin remain fixed */
+:host {
+    font-size: 14px !important;
+  }
+  
+  /* Additional styles to prevent inheritance */
+  .unaffected-component {
+    font-size: 14px !important; /* Fix font size for the whole component */
+    padding: 0 20px !important; /* Override any global padding */
+    margin: 0 !important; /* Override any global margin */
+  }
+  
